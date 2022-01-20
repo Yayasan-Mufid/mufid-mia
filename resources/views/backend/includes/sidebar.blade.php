@@ -1,14 +1,14 @@
 <div class="c-sidebar c-sidebar-dark c-sidebar-fixed c-sidebar-lg-show" id="sidebar">
-    <div class="c-sidebar-brand d-lg-down-none">
-        <svg class="c-sidebar-brand-full" width="118" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#full') }}"></use>
-        </svg>
-        <svg class="c-sidebar-brand-minimized" width="46" height="46" alt="CoreUI Logo">
-            <use xlink:href="{{ asset('img/brand/coreui.svg#signet') }}"></use>
-        </svg>
+    <div class="c-sidebar-brand d-lg-down-none" style="background-color: #fff">
+        <div class="c-sidebar-brand-full">
+            <img class="navbar-brand-full" src="https://mufid.or.id/wp-content/themes/yayasan-mufid/assets/images/mufid-logo.svg" width="100" alt="mufid" style="padding: 5px">
+        </div>
+        <div class="c-sidebar-brand-minimized">
+            <img class="navbar-brand-full" src="https://mufid.or.id/wp-content/themes/yayasan-mufid/assets/images/mufid-logo.svg" width="50" alt="mufid" style="padding: 5px">
+        </div>
     </div><!--c-sidebar-brand-->
 
-    <ul class="c-sidebar-nav">
+    <ul class="c-sidebar-nav" style="background-color: rgb(24, 24, 24)">
         <li class="c-sidebar-nav-item">
             <x-utils.link
                 class="c-sidebar-nav-link"
@@ -98,5 +98,5 @@
         @endif
     </ul>
 
-    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized"></button>
+    <button class="c-sidebar-minimizer c-class-toggler" type="button" data-target="_parent" data-class="c-sidebar-minimized" style="background-color: rgb(14, 14, 14)"></button>
 </div><!--sidebar-->

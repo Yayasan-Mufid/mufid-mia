@@ -1,9 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
     <div class="container">
-        <x-utils.link
-            :href="route('frontend.index')"
-            :text="appName()"
-            class="navbar-brand" />
+        <img class="navbar-brand-full" src="https://mufid.or.id/wp-content/themes/yayasan-mufid/assets/images/mufid-logo.svg" width="120" alt="Honda" style="padding: 5px">
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="@lang('Toggle navigation')">
             <span class="navbar-toggler-icon"></span>
@@ -34,7 +31,7 @@
                             class="nav-link" />
                     </li>
 
-                    @if (config('boilerplate.access.user.registration'))
+                    {{-- @if (config('boilerplate.access.user.registration'))
                         <li class="nav-item">
                             <x-utils.link
                                 :href="route('frontend.auth.register')"
@@ -43,7 +40,7 @@
                                 class="nav-link" />
 
                         </li>
-                    @endif
+                    @endif --}}
                 @else
                     <li class="nav-item dropdown">
                         <x-utils.link
