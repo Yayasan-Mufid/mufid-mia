@@ -64,9 +64,9 @@
             position: relative;
         }
         .zoom:hover {
-            -ms-transform: scale(13); /* IE 9 */
-            -webkit-transform: scale(13); /* Safari 3-8 */
-            transform: scale(13);
+            -ms-transform: scale(15); /* IE 9 */
+            -webkit-transform: scale(15); /* Safari 3-8 */
+            transform: scale(15);
             z-index: 999;
         }
 

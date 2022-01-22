@@ -96,8 +96,8 @@
                 <div class="col-2 pl-0">
                     Kontak
                 </div>
-                <div class="col-2">
-                    Bukti Transfer
+                <div class="col-1">
+                    Bukti TF
                 </div>
                 <div class="col">
                     Jenis
@@ -156,33 +156,36 @@
                                 </div>
 
                             </div>
-                            <div class="col-2">
+                            <div class="col-1">
                                 <div style="position; fixed">
                                     {{-- <img class="zoom" src="{{ 'https://dashboard.agen-entrepreneurid.com/app/public/bukti-transfer/'.$data->bukti_tf ?? '404.jpg' }}" alt="" height="50"> --}}
-                                    <img class="zoom" src="https://dashboard.agen-entrepreneurid.com/app/public/bukti-transfer/siawira.foundation@gmail.com-MSR-2022-1-Tv2MC.jpg" alt="" height="50">
+                                    <img class="zoom" src="https://dashboard.agen-entrepreneurid.com/app/public/bukti-transfer/siawira.foundation@gmail.com-MSR-2022-1-Tv2MC.jpg" alt="" height="40">
                                 </div>
                             </div>
                             <div class="col">
                                 <div class="row">
-                                    <div class="col-3">
+                                    <div class="col-4">
                                         {{-- <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false"> --}}
                                         <a data-toggle="collapse" href="#detail1" aria-expanded="false">
-                                            <div class="text-muted position-absolute" style="font-size: 12px; text-transform: uppercase;">
+                                            <div class="text-muted font-weight-bold" style="font-size: 12px; text-transform: uppercase;">
                                                 {{-- @if ($data->jenis == L)
                                                     IKHWAN
                                                 @elseif ($data->jenis == P)
                                                     AKHWAT
                                                 @endif --}}
-                                                <strong>IKHWAN</strong>
+                                                IKHWAN
+                                            </div>
+                                            <div class="text-muted" style="font-size: 9px; text-transform: uppercase;">
+                                                ANGKATAN 4
                                             </div>
                                         </a>
                                     </div>
-                                    <div class="col-7">
+                                    <div class="col-6">
                                         <form action="">
                                             <input type="hidden" name="metode" value="konfirmasi">
                                             {{-- <input type="hidden" name="id" value="{{ $data->id }}"> --}}
                                             <input type="hidden" name="id" value="1">
-                                            <button class="btn btn-warning btn-sm" style="color:rgb(56, 56, 56)">
+                                            <button class="btn btn-warning" style="color:rgb(56, 56, 56)">
                                                 <i class="fas fa-edit"></i> Konfirmasi
                                             </button>
                                         </form>
@@ -191,8 +194,9 @@
                                     <div class="col-2" style="padding: 0px">
 
                                         <div class="btn-group dropleft">
-                                            <button class="btn btn-sm btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                                                Opsi
+
+                                            <button class="btn btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                                                <i class="fas fa-cog"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                 <a href="/admin/transaksi?id=1&metode=edit" class="dropdown-item">
@@ -226,12 +230,15 @@
                                                 <tr>
                                                     <td>
                                                         {{-- {{ $data->tgllahir }} --}}
+                                                        01-01-1998
                                                     </td>
                                                     <td>
                                                         {{-- {{ $data->alamat }} --}}
+                                                        JLN PAPAN ULIN NO. 19
                                                     </td>
                                                     <td>
                                                         {{-- {{ $data->kota }} --}}
+                                                        BALIKPAPAN
                                                     </td>
                                                 </tr>
                                             </tbody>
