@@ -22,16 +22,16 @@ class CreatePendaftaransTable extends Migration
             $table->string('nohp_whatsapp');
             $table->string('nohp_telegram');
             $table->text('alamat')->nullable();
-            $table->string('tgllahir')->nullable();
+            $table->string('tgl_lahir')->nullable();
             $table->string('gender')->nullable(); // L - IKHWAN, P - AKHWAT
             $table->string('domisili')->nullable();
             $table->string('angkatan')->nullable();
             $table->integer('konfirmasi')->default(0); // JUMLAH KIRIM NOTIF KONFIRMASI
-            $table->integer('tolaktf')->default(0); // JUMLAH KIRIM NOTIF MENOLAK BUKTI TF
+            $table->integer('tolak_tf')->default(0); // JUMLAH KIRIM NOTIF MENOLAK BUKTI TF
             $table->integer('status')->default(0); // 1 DAFTAR/MENUNGGU KONFIRMASI - 2 AKTIF - 3 TOLAK TF
             $table->string('bukti_tf')->nullable();
             $table->string('waktu_konfirmasi')->nullable();
-            $table->string('waktu_tolaktf')->nullable();
+            $table->string('waktu_tolak_tf')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });
