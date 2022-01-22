@@ -27,6 +27,7 @@ class Pendaftaran extends Model
         'bukti_tf',
         'waktu_konfirmasi',
         'waktu_tolak_tf',
+        'nominal',
         'Keterangan'
     ];
 

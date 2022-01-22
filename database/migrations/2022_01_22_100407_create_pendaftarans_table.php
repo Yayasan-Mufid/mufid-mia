@@ -32,6 +32,7 @@ class CreatePendaftaransTable extends Migration
             $table->string('bukti_tf')->nullable();
             $table->string('waktu_konfirmasi')->nullable();
             $table->string('waktu_tolak_tf')->nullable();
+            $table->integer('nominal')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();
         });
