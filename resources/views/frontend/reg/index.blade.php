@@ -12,7 +12,7 @@
                 <x-frontend.card>
 
                     <x-slot name="body">
-                        <x-forms.post :action="route('frontend.auth.login')">
+                        <x-forms.post :action="route('frontend.simpan')">
                             <div class="text-center">
                                 <img src="https://mufid.or.id/wp-content/themes/yayasan-mufid/assets/images/mufid-logo.svg" width="150">
 
@@ -39,11 +39,13 @@
                                 </div><!--row-->
                             </div><!--row-->
                             <div class="form-group row">
-                                <div class="col-md-9 col-form-label">
+                                <label class="col-3 form-control-label" >Jenis</label>
+                                <div class="col-9">
                                     <div class="form-check form-check-inline mr-1">
                                         <input class="form-check-input" type="radio" value="L" name="gender" required>
                                         <label class="form-check-label">IKHWAN</label>
                                     </div>
+                                    <br>
                                     <div class="form-check form-check-inline mr-1">
                                         <input class="form-check-input" type="radio" value="P" name="gender">
                                         <label class="form-check-label">AKHWAT</label>
@@ -59,11 +61,11 @@
                                                 +62
                                             </span>
                                         </div>
-                                        <input id="nohp" type="number" name="nohp" value="{{ old('nohp') }}" class="form-control" maxlength="12" placeholder="No. Handphone WhatsApp" required="">
+                                        <input id="nohpwa" type="number" name="nohpwa" value="{{ old('nohpwa') }}" class="form-control" maxlength="12" placeholder="No. Handphone WhatsApp" required="">
                                     </div><!--form-group-->
-                                    @if ($errors->has('nohp'))
+                                    @if ($errors->has('nohpwa'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('nohp') }}</strong>
+                                            <strong>{{ $errors->first('nohpwa') }}</strong>
                                         </span>
                                     @endif
                                 </div><!--col-->
@@ -80,11 +82,11 @@
                                                 +62
                                             </span>
                                         </div>
-                                        <input id="nohp_tele" type="number" name="nohp_tele" value="{{ old('nohp_tele') }}" class="form-control" maxlength="12" placeholder="No. Handphone Telegram" required="">
+                                        <input id="nohptele" type="number" name="nohptele" value="{{ old('nohptele') }}" class="form-control" maxlength="12" placeholder="No. Handphone Telegram" required="">
                                     </div><!--form-group-->
                                     @if ($errors->has('nohp'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('nohp_tele') }}</strong>
+                                            <strong>{{ $errors->first('nohptele') }}</strong>
                                         </span>
                                     @endif
                                 </div><!--col-->
@@ -115,7 +117,7 @@
                             <div class="form-group row">
                                 <label class="col-3 form-control-label" >Alamat Domisili</label>
                                 <div class="col-9">
-                                    <textarea class="form-control" name="alamat" value="{{ old('alamat') }}" placeholder="Alamat Domisili"></textarea>
+                                    <textarea class="form-control" name="alamat" placeholder="Alamat Domisili">{{ old('alamat') }}</textarea>
                                 </div><!--col-->
                             </div>
 
@@ -133,15 +135,15 @@
                                         <tbody>
                                             <tr>
                                                 <td>Biaya Pendaftaran<div class="text-muted">Rp. 100.000</div></td>
-                                                <td class="text-center"><input id="biaya-daftar" type="checkbox" value="" checked disabled/></td>
+                                                <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
                                             </tr>
                                             <tr>
                                                 <td>SPP I<div class="text-muted">Rp. 50.000</div></td>
-                                                <td class="text-center"><input id="biaya-daftar" type="checkbox" value="" checked disabled/></td>
+                                                <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
                                             </tr>
                                             <tr>
                                                 <td>Kode Unik Angkatan 4 <div class="text-muted">Rp. 4</div></td>
-                                                <td class="text-center"><input id="biaya-daftar" type="checkbox" value="" checked disabled/></td>
+                                                <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center"><strong>Total</strong> </td>

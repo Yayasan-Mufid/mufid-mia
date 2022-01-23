@@ -9,8 +9,8 @@ use Tabuna\Breadcrumbs\Trail;
  * All route names are prefixed with 'frontend.'.
  */
 Route::get('/',                     [HomeController::class, 'index'])->name('index');
-Route::get('/pembayaran',           [HomeController::class, 'pembayaran'])->name('pembayaran');
-Route::get('/upload-bukti-tf',      [HomeController::class, 'uploadbuktitf'])->name('uploadbuktitf');
+Route::post('/simpan',               [HomeController::class, 'simpan'])->name('simpan');
+Route::post('/upload-bukti-tf',     [HomeController::class, 'uploadbuktitf'])->name('uploadbuktitf');
 Route::get('/selesai-daftar',       [HomeController::class, 'selesai'])->name('selesai');
 
 
