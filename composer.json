@@ -12,6 +12,7 @@
     "require": {
         "php": "^7.4|^8.0",
         "ext-gd": "*",
+        "lib-gd": "^2.3",
         "arcanedev/log-viewer": "8.x",
         "darkghosthunter/laraguard": "^3.0",
         "fruitcake/laravel-cors": "^2.0",
