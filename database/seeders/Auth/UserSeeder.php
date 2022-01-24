@@ -24,8 +24,8 @@ class UserSeeder extends Seeder
         User::create([
             'type' => User::TYPE_ADMIN,
             'name' => 'Super Admin',
-            'email' => 'admin@admin.com',
-            'password' => 'secret',
+            'email' => 'admin.mia@mufid.or.id',
+            'password' => 'mia2022',
             'email_verified_at' => now(),
             'active' => true,
         ]);
@@ -34,8 +34,8 @@ class UserSeeder extends Seeder
             User::create([
                 'type' => User::TYPE_USER,
                 'name' => 'Test User',
-                'email' => 'user@user.com',
-                'password' => 'secret',
+                'email' => 'user.mia@mufid.or.id',
+                'password' => 'mia2022',
                 'email_verified_at' => now(),
                 'active' => true,
             ]);
