@@ -154,7 +154,7 @@ Salam,
             // Storage::disk('bukti-transfer-atthala')->put($nama_file_bukti_transfer, File::get($file_bukti_transfer));
 
             $buktitf         = Image::make($file_bukti_transfer);
-            $lokasibuktitf   = public_path('../../../public_html/bukti-transfer/');
+            $lokasibuktitf   = public_path('../../public_html/bukti-transfer/');
             $buktitf->resize(800, null, function ($constraint) {
                 $constraint->aspectRatio();
             });
