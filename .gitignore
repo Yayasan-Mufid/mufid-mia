@@ -3,7 +3,6 @@
 /public/hot
 /public/storage
 /public/reg-mia
-/public/bukti-transfer
 /storage/*.key
 /vendor
 /.vscode
