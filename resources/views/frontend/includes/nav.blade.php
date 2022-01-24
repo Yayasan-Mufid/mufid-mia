@@ -99,5 +99,5 @@
 </nav>
 
 @if (config('boilerplate.frontend_breadcrumbs'))
-    @include('frontend.includes.partials.breadcrumbs')
+    {{-- @include('frontend.includes.partials.breadcrumbs') --}}
 @endif

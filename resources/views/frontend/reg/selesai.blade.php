@@ -1,11 +1,8 @@
 @extends('frontend.layouts.reg')
 
-@section('title', 'MIA | Registrasi')
+@section('title', 'Selesai')
 
 @section('content')
-@stack('before-styles')
-    <link rel="stylesheet" type="text/css" href="/filepond/app.css">
-@stack('after-styles')
     <div class="container py-4 mt-4">
         <div class="row justify-content-center">
             <div class="col-md-4">
@@ -45,58 +42,4 @@
         </div><!--row-->
     </div><!--container-->
 
-<script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
-<script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-<script src="https://unpkg.com/filepond-plugin-image-resize/dist/filepond-plugin-image-resize.js"></script>
-<script src="/filepond/app.js"></script>
-<script src="https://unpkg.com/jquery-filepond/filepond.jquery.js"></script>
-<script>
-    $(function(){
-        $.fn.filepond.registerPlugin(
-            FilePondPluginImagePreview,
-            FilePondPluginFileValidateType,
-            FilePondPluginFileValidateSize,
-            FilePondPluginImageResize
-        );
-    });
-
-    $(function(){
-            $('.upload-buktitransfer').filepond({
-                labelIdle: '<span class="filepond--label-action"> Upload File/Foto Bukti Transfer.</span>',
-                allowMultiple: false,
-                acceptedFileTypes: "image/png, image/jpeg",
-                allowFileSizeValidation: true,
-                maxFileSize: '10MB',
-                server: {
-                    url: '/upload-bukti-tf',
-                    process: {
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        onload: (response) => response.key,
-                        onerror: (response) => response.data,
-                        ondata: (formData) => {
-                            return console.log('sukses');
-                        }
-                    }
-                }
-            });
-
-            $('.upload-buktitransfer').on('FilePond:processfile', function(e) {
-                document.getElementById("btn-submit").classList.remove('d-none');
-                document.getElementById("btn-submit-dis").classList.add('d-none');
-            });
-
-        });
-    $(document).ready(function () {
-        $('#fform').on('submit',function(e) {
-            if (pond.status != 4) {
-                return false;
-            }
-            $(this).find(':input[type=submit]').hide();
-            return true;
-        });
-    });
-
-</script>
 @endsection

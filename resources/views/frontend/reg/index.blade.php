@@ -1,6 +1,6 @@
 @extends('frontend.layouts.reg')
 
-@section('title', 'MIA | Registrasi')
+@section('title', 'Registrasi')
 
 @section('content')
 @stack('before-styles')
@@ -138,16 +138,12 @@
                                                 <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
                                             </tr>
                                             <tr>
-                                                <td>SPP I<div class="text-muted">Rp. 50.000</div></td>
-                                                <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
-                                            </tr>
-                                            <tr>
                                                 <td>Kode Unik Angkatan 4 <div class="text-muted">Rp. 4</div></td>
                                                 <td class="text-center"><input type="checkbox" value="" checked disabled/></td>
                                             </tr>
                                             <tr>
                                                 <td class="text-center"><strong>Total</strong> </td>
-                                                <td class="text-center"><div class="text-muted">Rp. 150.004</div></td>
+                                                <td class="text-center"><div class="text-muted">Rp. 100.004</div></td>
                                             </tr>
                                             {{-- <tr>
                                                 <td>Pembayaran modul dan buku prestasi <div class="text-muted">Rp. 60.000</div></td>
@@ -237,7 +233,7 @@
                 allowFileSizeValidation: true,
                 maxFileSize: '10MB',
                 server: {
-                    url: '/upload-bukti-tf',
+                    url: 'upload-bukti-tf',
                     process: {
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
