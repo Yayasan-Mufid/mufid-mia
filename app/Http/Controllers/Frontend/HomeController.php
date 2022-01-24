@@ -147,19 +147,19 @@ Salam,
 
     public function uploadbuktitf(Request $request)
     {
-        if ($_SERVER['HTTP_HOST'] == 'mufid-mia.com') {
-            $file_bukti_transfer      = $request->file('filepond');
-            $nama_file_bukti_transfer = '4-'.Str::random(5).'-'.Carbon::now().'.'.$file_bukti_transfer->getClientOriginalExtension();
-            Session::put('filebuktitransfer', $nama_file_bukti_transfer); //membuat sesi nama file agar sesuai dengan pemilik pendaftar
-            // Storage::disk('bukti-transfer-atthala')->put($nama_file_bukti_transfer, File::get($file_bukti_transfer));
+        // if ($_SERVER['HTTP_HOST'] == 'mufid-mia.com') {
+        //     $file_bukti_transfer      = $request->file('filepond');
+        //     $nama_file_bukti_transfer = '4-'.Str::random(5).'-'.Carbon::now().'.'.$file_bukti_transfer->getClientOriginalExtension();
+        //     Session::put('filebuktitransfer', $nama_file_bukti_transfer); //membuat sesi nama file agar sesuai dengan pemilik pendaftar
+        //     // Storage::disk('bukti-transfer-atthala')->put($nama_file_bukti_transfer, File::get($file_bukti_transfer));
 
-            $buktitf         = Image::make($file_bukti_transfer);
-            $lokasibuktitf   = public_path('../../public_html/bukti-transfer/');
-            $buktitf->resize(800, null, function ($constraint) {
-                $constraint->aspectRatio();
-            });
-            $buktitf->save($lokasibuktitf.Session::get('filebuktitransfer'));
-        } else {
+        //     $buktitf         = Image::make($file_bukti_transfer);
+        //     $lokasibuktitf   = public_path('../../public_html/bukti-transfer/');
+        //     $buktitf->resize(800, null, function ($constraint) {
+        //         $constraint->aspectRatio();
+        //     });
+        //     $buktitf->save($lokasibuktitf.Session::get('filebuktitransfer'));
+        // } else {
             $file_bukti_transfer      = $request->file('filepond');
             $nama_file_bukti_transfer = '4-'.Str::random(5).'-'.Carbon::now().'.'.$file_bukti_transfer->getClientOriginalExtension();
             Session::put('filebuktitransfer', $nama_file_bukti_transfer); //membuat sesi nama file agar sesuai dengan pemilik pendaftar
@@ -171,7 +171,7 @@ Salam,
                 $constraint->aspectRatio();
             });
             $buktitf->save($lokasibuktitf.Session::get('filebuktitransfer'));
-        }
+        // }
     }
 
     public function selesai()
