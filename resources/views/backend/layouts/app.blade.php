@@ -87,6 +87,7 @@
     </style>
     <livewire:styles />
     @stack('after-styles')
+
 </head>
 <body class="c-app">
     @include('backend.includes.sidebar')
@@ -110,12 +111,18 @@
 
         @include('backend.includes.footer')
     </div><!--c-wrapper-->
-
     @stack('before-scripts')
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/backend.js') }}"></script>
     <livewire:scripts />
+    <script type="text/javascript">
+        $(document).ready(function(){
+              $("#status").val("{!! request()->status !!}");
+              $("#jenis").val("{!! request()->jenis !!}");
+              $("#perpage").val("{!! request()->perpage ?? 5 !!}");
+        });
+    </script>
     @stack('after-scripts')
 </body>
 </html>

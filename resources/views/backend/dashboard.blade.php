@@ -39,9 +39,8 @@
                             </div>
                             <select id="status" name="status" class="form-control">
                                 <option value="">Semua</option>
-                                <option value="1">Belum Aktif</option>
-                                <option value="2">Konfirmasi</option>
-                                <option value="3">Aktif</option>
+                                <option value="1">Konfirmasi</option>
+                                <option value="2">Aktif</option>
                             </select>
                         </div>
                         <div class="pb-2 col">
@@ -106,33 +105,30 @@
 
             <div class="row mt-4" style="margin-top: 0.35rem!important;">
                 <div class="col">
-                    {{-- @php
+                    @php
                     $first  = 0;
                     $end    = 0;
                     @endphp
-                    @foreach ($datapendaftar as $key => $data) --}}
+                    @foreach ($datapendaftar as $key => $data)
                     <div class="legend">
                         <div class="row kotak">
                             <div class="col-2">
                                 <a data-toggle="collapse" href="#detail1"
                                     aria-expanded="false" style="color: rgb(56, 56, 56);">
-                                    <div><strong>IRFAN</strong></div>
+                                    <div><strong>{{ $data->nama }}</strong></div>
                                     <div class="small text-muted">
-                                        {{-- @php
-                                            $birth = !empty($data->tgllahir) ? $data->tgllahir : \Carbon\Carbon::now()->format('Y-m-d');
+                                        @php
+                                            $birth = !empty($data->tgl_lahir) ? $data->tgl_lahir : \Carbon\Carbon::now()->format('Y-m-d');
                                             $umur = !empty(\Carbon\Carbon::parse($birth)->age) ? \Carbon\Carbon::parse($birth)->age : '0';
                                         @endphp
-                                            {{ $data->gender }} | {{ $umur ?? 0 }}  --}}
-                                            20 Tahun
+                                            {{ $data->tgl_lahir }} | {{ $umur ?? '-' }} Tahun
                                     </div>
                                 </a>
                             </div>
                             <div class="col-3">
-                                {{-- {{ $data->email }} --}}
-                                irfan@gmail.com
+                                {{ $data->email }}
                                 <div class="small text-muted">
-                                    {{-- Daftar : {{ $data->created_at }} --}}
-                                    Daftar :  2022-01-22 16:34:43
+                                    Daftar : {{ $data->created_at }}
                                 </div>
                             </div>
                             <div class="col-2" style="margin-left: 0px">
@@ -143,11 +139,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td>WhatsApp</td>
-                                                        <td>: <strong>+62812345678</strong></td>
+                                                        <td>: <strong>{{ $data->nohp_whatsapp }}</strong></td>
                                                     </tr>
                                                     <tr>
                                                         <td>Telegram</td>
-                                                        <td>: <strong>+62812345678</strong></td>
+                                                        <td>: <strong>{{ $data->nohp_telegram }}</strong></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -158,8 +154,7 @@
                             </div>
                             <div class="col-1">
                                 <div style="position; fixed">
-                                    {{-- <img class="zoom" src="{{ 'https://dashboard.agen-entrepreneurid.com/app/public/bukti-transfer/'.$data->bukti_tf ?? '404.jpg' }}" alt="" height="50"> --}}
-                                    <img class="zoom" src="https://dashboard.agen-entrepreneurid.com/app/public/bukti-transfer/siawira.foundation@gmail.com-MSR-2022-1-Tv2MC.jpg" alt="" height="40">
+                                    <img class="zoom" src="{{ '/bukti-transfer/'.$data->bukti_tf ?? '404.jpg' }}" alt="" height="50">
                                 </div>
                             </div>
                             <div class="col">
@@ -168,15 +163,14 @@
                                         {{-- <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false"> --}}
                                         <a data-toggle="collapse" href="#detail1" aria-expanded="false">
                                             <div class="text-muted font-weight-bold" style="font-size: 12px; text-transform: uppercase;">
-                                                {{-- @if ($data->jenis == L)
+                                                @if ($data->gender == 'L')
                                                     IKHWAN
-                                                @elseif ($data->jenis == P)
+                                                @elseif ($data->gender == 'P')
                                                     AKHWAT
-                                                @endif --}}
-                                                IKHWAN
+                                                @endif
                                             </div>
                                             <div class="text-muted" style="font-size: 9px; text-transform: uppercase;">
-                                                ANGKATAN 4
+                                                ANGKATAN {{ $data->angkatan }}
                                             </div>
                                         </a>
                                     </div>
@@ -184,10 +178,16 @@
                                         <form action="">
                                             <input type="hidden" name="metode" value="konfirmasi">
                                             {{-- <input type="hidden" name="id" value="{{ $data->id }}"> --}}
-                                            <input type="hidden" name="id" value="1">
-                                            <button class="btn btn-warning" style="color:rgb(56, 56, 56)">
-                                                <i class="fas fa-edit"></i> Konfirmasi
-                                            </button>
+                                            <input type="hidden" name="id" value="{{ $data->id }}">
+                                            @if ($data->status == 1)
+                                                <button class="btn btn-warning" style="color:rgb(56, 56, 56)">
+                                                    <i class="fas fa-edit"></i> Konfirmasi
+                                                </button>
+                                            @else
+                                                <button class="btn btn-info">
+                                                    <i class="fas fa-check"></i> Aktif
+                                                </button>
+                                            @endif
                                         </form>
                                         {{-- @include('backend.transaksi.includes.status') --}}
                                     </div>
@@ -199,14 +199,14 @@
                                                 <i class="fas fa-cog"></i>
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                                <a href="/admin/transaksi?id=1&metode=edit" class="dropdown-item">
+                                                {{-- <a href="/admin/transaksi?id={{ $data->id }}&metode=edit" class="dropdown-item">
                                                     Edit
-                                                </a>
+                                                </a> --}}
                                                 <a href="#" title="Hapus" data-method="delete" data-trans-button-cancel="Batal" data-trans-button-confirm="Hapus"
                                                 data-trans-title=" dihapus?" class=" dropdown-item" style="cursor:pointer;" onclick="$(this).find(&quot;form&quot;).submit();">
                                                     <form action=""  onsubmit="return confirm('Apakah Anda yakin data dihapus ?');" style="display:none">
                                                         <input type="hidden" name="metode" value="hapus">
-                                                        <input type="hidden" name="id" value="1">
+                                                        <input type="hidden" name="id" value="{{ $data->id }}">
                                                     </form>
                                                     Hapus
                                                 </a>
@@ -222,23 +222,20 @@
                                         <hr>
                                         <table class="table table-sm table-borderless" style="margin-bottom: 0rem">
                                             <thead style="font-weight: 400;">
-                                                <th width="200">Tgl. Lahir</th>
+                                                <th width="200">Tgl. Konfirmasi</th>
                                                 <th>Alamat</th>
                                                 <th>Kota</th>
                                             </thead>
                                             <tbody style="font-weight: 300;">
                                                 <tr>
                                                     <td>
-                                                        {{-- {{ $data->tgllahir }} --}}
-                                                        01-01-1998
+                                                        {{ $data->waktu_konfirmasi }}
                                                     </td>
                                                     <td>
-                                                        {{-- {{ $data->alamat }} --}}
-                                                        JLN PAPAN ULIN NO. 19
+                                                        {{ $data->alamat }}
                                                     </td>
                                                     <td>
-                                                        {{-- {{ $data->kota }} --}}
-                                                        BALIKPAPAN
+                                                        {{ $data->domisili }}
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -248,11 +245,11 @@
                             </div>
                         </div>
                     </div>
-                    {{-- @php
+                    @php
                     $first  = $datapendaftar->firstItem();
                     $end    = $key + $datapendaftar->firstItem();
                     @endphp
-                    @endforeach --}}
+                    @endforeach
                 </div>
             </div>
 
@@ -260,23 +257,16 @@
             <div class="row">
                 <div class="col-7">
                     <div class="float-left">
-                        {{-- {!! $first !!} - {!! $end !!} From {!! $datapendaftar->total() !!} Data --}}
+                        {!! $first !!} - {!! $end !!} From {!! $datapendaftar->total() !!} Data
                     </div>
                 </div><!--col-->
 
                 <div class="col-5">
                     <div class="float-right">
-                        {{-- {!! $datapendaftar->appends(request()->query())->links() !!} --}}
+                        {!! $datapendaftar->appends(request()->query())->links() !!}
                     </div>
                 </div><!--col-->
             </div><!--row-->
         </div><!--card-body-->
     </div><!--card-->
-    <script type="text/javascript">
-        $(document).ready(function(){
-              $("#status").val("{!! request()->status !!}");
-              $("#jenis").val("{!! request()->jenis !!}");
-              $("#perpage").val("{!! request()->perpage ?? 5 !!}");
-        });
-    </script>
 @endsection
