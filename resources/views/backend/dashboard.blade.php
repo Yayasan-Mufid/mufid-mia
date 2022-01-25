@@ -160,7 +160,6 @@
                             <div class="col">
                                 <div class="row">
                                     <div class="col-4">
-                                        {{-- <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false"> --}}
                                         <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false">
                                             <div class="text-muted font-weight-bold" style="font-size: 12px; text-transform: uppercase;">
                                                 @if ($data->gender == 'L')
@@ -217,8 +216,7 @@
                             </div>
                             <div class="col-12" style="color: #4e4e4e">
                                 <div class="col">
-                                    {{-- <div class="collapse" id="detail{{ $key + $datapendaftar->firstItem() }}"> --}}
-                                    <div class="collapse" id="detail1">
+                                    <div class="collapse" id="detail{{ $key + $datapendaftar->firstItem() }}">
                                         <hr>
                                         <table class="table table-sm table-borderless" style="margin-bottom: 0rem">
                                             <thead style="font-weight: 400;">
