@@ -2,6 +2,7 @@
 /node_modules
 /public/hot
 /public/storage
+/public/bukti-transfer/*
 /public/reg-mia
 /storage/*.key
 /vendor
