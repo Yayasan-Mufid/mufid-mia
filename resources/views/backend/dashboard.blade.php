@@ -113,7 +113,7 @@
                     <div class="legend">
                         <div class="row kotak">
                             <div class="col-2">
-                                <a data-toggle="collapse" href="#detail1"
+                                <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}"
                                     aria-expanded="false" style="color: rgb(56, 56, 56);">
                                     <div><strong>{{ $data->nama }}</strong></div>
                                     <div class="small text-muted">
@@ -161,7 +161,7 @@
                                 <div class="row">
                                     <div class="col-4">
                                         {{-- <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false"> --}}
-                                        <a data-toggle="collapse" href="#detail1" aria-expanded="false">
+                                        <a data-toggle="collapse" href="#detail{{ $key + $datapendaftar->firstItem() }}" aria-expanded="false">
                                             <div class="text-muted font-weight-bold" style="font-size: 12px; text-transform: uppercase;">
                                                 @if ($data->gender == 'L')
                                                     IKHWAN
