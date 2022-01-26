@@ -134,4 +134,37 @@ Salam,
 
         return view('backend.dashboard', compact('datapendaftar'));
     }
+
+    public function exportmia()
+    {
+        $dataexport = Pendaftaran::
+                when(request()->get('nama'), function ($query) {
+                    if( request()->get('nama') != null) {
+                        return $query->whereRaw('LOWER(nama) LIKE ? ', '%' . strtolower(request()->get('nama')) . '%')
+                        ->orWhereRaw('LOWER(email) LIKE ? ', '%' . strtolower(request()->get('nama')) . '%')
+                        ->orWhereRaw('nohp_whatsapp LIKE ? ', '%' . strtolower(request()->get('nama')) . '%')
+                        ->orWhereRaw('nohp_telegram LIKE ? ', '%' . strtolower(request()->get('nama')) . '%');
+                    }
+                })
+                ->when(request()->get('alamat'), function ($query) {
+                    if( request()->get('alamat') != null) {
+                        return $query->whereRaw('LOWER(alamat) LIKE ? ', '%' . strtolower(request()->get('alamat')) . '%')
+                                    ->orWhereRaw('LOWER(domisili) LIKE ? ', '%' . strtolower(request()->get('alamat')) . '%');
+                    }
+                })
+                ->when(request()->get('status'), function ($query) {
+                    if( request()->get('status') != null) {
+                        return $query->where('status', request()->get('status'));
+                    }
+                })
+                ->when(request()->get('jenis'), function ($query) {
+                    if( request()->get('jenis') != null) {
+                        return $query->where('gender', request()->get('jenis'));
+                    }
+                })
+                ->orderBy('created_at', 'asc')
+                ->paginate($this->perpage);
+
+        return view('backend.export-format-mia', compact('dataexport'));
+    }
 }

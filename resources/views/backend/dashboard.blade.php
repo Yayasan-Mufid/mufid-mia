@@ -67,8 +67,8 @@
                             </select>
                         </div>
                         <div class="col-3">
-                            <a href="#" data-toggle="modal" data-target="#exportdata" class="btn btn-sm btn-primary btn-success">
-                                <i class="fas fa-download"></i> Export
+                            <a href="{{ route('admin.export-mia') }}" target="_blank" class="btn btn-sm btn-primary btn-success">
+                                <i class="fas fa-download"></i> Export Data
                             </a>
                             {{-- <a href="/admin/transaksi/cnl/resi" class="btn btn-sm btn-primary ">
                                 <i class="fas fa-book"></i> Resi CNL
