@@ -163,7 +163,7 @@ Salam,
                     }
                 })
                 ->orderBy('created_at', 'asc')
-                ->get();
+                ->paginate(2000);
 
         return view('backend.export-format-mia', compact('dataexport'));
     }
