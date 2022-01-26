@@ -21,8 +21,8 @@ class HomeController extends Notification
         $this->email         = request()->email ?? null;
         $this->gender        = request()->gender ?? null;
         $this->tgllahir      = request()->tgl . '-' . request()->bln . '-' . request()->thn ?? null;
-        $this->nohpwa        = $this->nohp(request()->nohpwa) ?? null;
-        $this->nohptele      = $this->nohp(request()->nohptele) ?? null;
+        $this->nohpwa        = request()->kode_nohpwa.$this->nohp(request()->nohpwa) ?? null;
+        $this->nohptele      = request()->kode_nohptele.$this->nohp(request()->nohptele) ?? null;
         $this->kota          = request()->kota ?? null;
         $this->alamat        = request()->alamat ?? null;
     }
@@ -89,36 +89,27 @@ class HomeController extends Notification
 
     public function simpan()
     {
-        // dd();
-        $cekemail = Pendaftaran::
-                where([
-                    ['email', $this->email],
-                ])->first();
+        try {
+            $kode = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-        if ($cekemail) {
-            return redirect()->back()->withFlashDanger('Email sudah terdaftar.')->withInput();
-        } else {
-            try {
-                $kode = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+            $pendaftar = new Pendaftaran;
+            $pendaftar->uuid            = Str::uuid();
+            $pendaftar->kode            = rand(10000,99999);
+            $pendaftar->nama            = strtoupper($this->nama);
+            $pendaftar->email           = strtolower($this->email);
+            $pendaftar->nohp_whatsapp   = $this->nohpwa;
+            $pendaftar->nohp_telegram   = $this->nohptele;
+            $pendaftar->domisili        = strtoupper($this->kota);
+            $pendaftar->alamat          = strtoupper($this->alamat);
+            $pendaftar->tgl_lahir       = $this->tgllahir;
+            $pendaftar->gender          = $this->gender;
+            $pendaftar->status          = '1'; // MENUNGGU KONFIRMASI
+            $pendaftar->angkatan        = '4';
+            $pendaftar->bukti_tf        = Session::get('filebuktitransfer');;
+            $pendaftar->nominal         = 100004; // -- TUK SEMENTARA NOMINAL STATIS --
+            $pendaftar->save();
 
-                $pendaftar = new Pendaftaran;
-                $pendaftar->uuid            = Str::uuid();
-                $pendaftar->kode            = rand(10000,99999);
-                $pendaftar->nama            = strtoupper($this->nama);
-                $pendaftar->email           = strtolower($this->email);
-                $pendaftar->nohp_whatsapp   = $this->nohpwa;
-                $pendaftar->nohp_telegram   = $this->nohptele;
-                $pendaftar->domisili        = strtoupper($this->kota);
-                $pendaftar->alamat          = strtoupper($this->alamat);
-                $pendaftar->tgl_lahir       = $this->tgllahir;
-                $pendaftar->gender          = $this->gender;
-                $pendaftar->status          = '1'; // MENUNGGU KONFIRMASI
-                $pendaftar->angkatan        = '4';
-                $pendaftar->bukti_tf        = Session::get('filebuktitransfer');;
-                $pendaftar->nominal         = 100004; // -- TUK SEMENTARA NOMINAL STATIS --
-                $pendaftar->save();
-
-                $isiwa = 'Assalamualaikum Warrohmatullah Wabarokatuh
+            $isiwa = 'Assalamualaikum Warrohmatullah Wabarokatuh
 
 Nama : '.$pendaftar->nama.'
 Email : '.$pendaftar->email.'
@@ -136,11 +127,10 @@ Salam,
 
 *Tim MUFID - MIA*';
 
-                $this->notifwa($this->nohpwa, $isiwa);
+            $this->notifwa($this->nohpwa, $isiwa);
 
-            } catch (Throwable $td) {
-                return redirect()->back()->withFlashDanger('Pendaftaran Gagal ! Terjadi kesalahan, mohon ulangi. Terima Kasih')->withInput();
-            }
+        } catch (Throwable $td) {
+            return redirect()->back()->withFlashDanger('Pendaftaran Gagal ! Terjadi kesalahan, mohon ulangi. Terima Kasih')->withInput();
         }
 
         return redirect()->route('frontend.selesai');

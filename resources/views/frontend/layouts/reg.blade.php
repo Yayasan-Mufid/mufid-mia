@@ -45,5 +45,13 @@
         }
         });
     </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#tgl_").val("{!! old('tgl_') ?? 1 !!}");
+            $("#bln_").val("{!! old('bln_') ?? 1 !!}");
+            $("#thn_").val("{!! old('thn_') ?? 1980 !!}");
+        });
+    </script>
 </body>
 </html>

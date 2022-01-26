@@ -56,12 +56,14 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                +62
+                                        <div class="input-group-prepend" style="width: 40%; ">
+                                            <span class="input-group-text" style="background: #fff">
+                                                <select name="kode_nohpwa" id="" class="form-control" style="border: none; height: unset; padding: 0px;border-top-right-radius: 0; border-bottom-right-radius: 0;font-size: 12px">
+                                                    @include('frontend.includes.phone-code')
+                                                </select>
                                             </span>
                                         </div>
-                                        <input id="nohpwa" type="number" name="nohpwa" value="{{ old('nohpwa') }}" class="form-control" maxlength="12" placeholder="No. Handphone WhatsApp" required="">
+                                        <input id="nohpwa" type="tel" name="nohpwa" value="{{ old('nohpwa') }}" class="form-control" maxlength="12" placeholder="No. Handphone WhatsApp" required="">
                                     </div><!--form-group-->
                                     @if ($errors->has('nohpwa'))
                                         <span class="invalid-feedback" role="alert">
@@ -77,12 +79,14 @@
                             <div class="row pb-4">
                                 <div class="col-12">
                                     <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                +62
+                                        <div class="input-group-prepend" style="width: 40%;"">
+                                            <span class="input-group-text" style="background: #fff">
+                                                <select name="kode_nohptele" id="" class="form-control" style="border: none; height: unset; padding: 0px;border-top-right-radius: 0; border-bottom-right-radius: 0;font-size: 12px">
+                                                    @include('frontend.includes.phone-code')
+                                                </select>
                                             </span>
                                         </div>
-                                        <input id="nohptele" type="number" name="nohptele" value="{{ old('nohptele') }}" class="form-control" maxlength="12" placeholder="No. Handphone Telegram" required="">
+                                        <input id="nohptele" type="tel" name="nohptele" value="{{ old('nohptele') }}" class="form-control" maxlength="12" placeholder="No. Handphone Telegram" required="">
                                     </div><!--form-group-->
                                     @if ($errors->has('nohp'))
                                         <span class="invalid-feedback" role="alert">
@@ -97,17 +101,17 @@
 
                             <div class="form-group">
                                 <label style="padding-right: 10px">Tanggal Lahir</label>
-                                <select name="tgl">
+                                <select name="tgl" id="tgl_">
                                     @for ($a = 1; $a <= 31; $a++)
                                         <option value="{{ $a }}">{{ $a }}</option>
                                     @endfor
                                 </select>
-                                <select name="bln">
+                                <select name="bln" id="bln_">
                                     @for ($a = 1; $a <= 12; $a++)
                                         <option value="{{ $a }}">{{ $a }}</option>
                                     @endfor
                                 </select>
-                                <select name="thn">
+                                <select name="thn" id="thn_">
                                     @for ($a = 1950; $a <= 2015; $a++)
                                         <option value="{{ $a }}">{{ $a }}</option>
                                     @endfor
