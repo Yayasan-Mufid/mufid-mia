@@ -121,7 +121,7 @@
                                             $birth = !empty($data->tgl_lahir) ? $data->tgl_lahir : \Carbon\Carbon::now()->format('Y-m-d');
                                             $umur = !empty(\Carbon\Carbon::parse($birth)->age) ? \Carbon\Carbon::parse($birth)->age : '0';
                                         @endphp
-                                            {{ $data->tgl_lahir }} | {{ $umur ?? '-' }} Tahun
+                                            {{ $data->domisili }} | {{ $umur ?? '-' }} Tahun
                                     </div>
                                 </a>
                             </div>
@@ -220,20 +220,24 @@
                                         <hr>
                                         <table class="table table-sm table-borderless" style="margin-bottom: 0rem">
                                             <thead style="font-weight: 400;">
-                                                <th width="200">Tgl. Konfirmasi</th>
                                                 <th>Alamat</th>
-                                                <th>Kota</th>
+                                                <th>Tanggal Lahir</th>
+                                                <th>ID MIA - Persiapan</th>
+                                                <th width="200">Tgl. Konfirmasi</th>
                                             </thead>
                                             <tbody style="font-weight: 300;">
                                                 <tr>
                                                     <td>
-                                                        {{ $data->waktu_konfirmasi }}
-                                                    </td>
-                                                    <td>
                                                         {{ $data->alamat }}
                                                     </td>
                                                     <td>
-                                                        {{ $data->domisili }}
+                                                        {{ $data->tgl_lahir }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $data->gender === "L" ? "MI04".str_pad($key + $datapendaftar->firstItem(), 4, '0', STR_PAD_LEFT) : "MA04".str_pad($key + $datapendaftar->firstItem(), 4, '0', STR_PAD_LEFT) }}
+                                                    </td>
+                                                    <td>
+                                                        {{ $data->waktu_konfirmasi }}
                                                     </td>
                                                 </tr>
                                             </tbody>
