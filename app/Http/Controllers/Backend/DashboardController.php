@@ -129,7 +129,7 @@ Salam,
                         return $query->where('gender', request()->get('jenis'));
                     }
                 })
-                ->orderBy('created_at', 'desc')
+                ->orderBy('created_at', 'asc')
                 ->paginate($this->perpage);
 
         return view('backend.dashboard', compact('datapendaftar'));
