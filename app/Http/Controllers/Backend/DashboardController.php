@@ -98,10 +98,10 @@ Salam,
 *Tim MUFID - MIA*';
 
                 $this->notifwa($konfirmasi->nohp_whatsapp, $isiwa);
-                return redirect()->back()->withFlashSuccess('Konfirmasi Berhasil. <br>Terima Kasih');
+                return redirect()->back()->withFlashSuccess('Konfirmasi '.$konfirmasi->nohp_whatsapp.' - '.$konfirmasi->nama.' Berhasil. Terima Kasih');
 
             } catch (Throwable $td) {
-                return redirect()->back()->withFlashDanger('Konfirmasi Gagal ! Terjadi kesalahan, mohon hubungi programmer. <br>Terima Kasih');
+                return redirect()->back()->withFlashDanger('Konfirmasi Gagal ! Terjadi kesalahan, mohon hubungi programmer. Terima Kasih');
             }
         }
 
