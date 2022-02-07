@@ -31,7 +31,7 @@ class HomeController extends Notification
     {
         $sesidaftar = Str::random(10);
         Session::put('sesidaftar', $sesidaftar);
-        return view('frontend.reg.index', compact('sesidaftar'));
+        return view('frontend.reg.tutup', compact('sesidaftar'));
     }
 
     public function nohp($nomor){
